@@ -12,6 +12,56 @@
 	z-index: 99999;
 }
 
+.modalButtonAdd {
+	all: unset;
+	background-color: #EDB00F;
+	border-radius: 5px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 1rem;
+	padding: 5px;
+	text-align: center;
+	width: 95%;
+  }
+  
+  .modalButtonRemove {
+	all: unset;
+	background-color: #EDB00F;
+	border-radius: 5px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 1rem;
+	padding: 5px;
+	text-align: center;
+	width: 95%;
+  }
+  
+  .modalTable {
+	background-color: rgba(0, 0, 0, 0.92);
+	border-collapse: collapse;
+	border-radius: 5px;
+	border-spacing: 0;
+	color: #fff;
+	margin-top: 2rem;
+	padding: 1rem;
+	width: 100%;
+  }
+  
+  .modalTable tbody tr {
+	border-bottom: 1px solid #EDB00F;
+  }
+  
+  .modalTable tbody tr:last-child {
+	border-bottom: none;
+  }
+  
+  .modalTable tbody tr td {
+	padding: 10px;
+	text-align: center;
+  }
+
 @media (min-width: 768px) {
 	.modalContainer {
 		min-height: 600px;
@@ -23,7 +73,7 @@
 
 .modalCloseButton{
 	all: unset;
-  height: 20px;
+  	height: 20px;
 	margin: 10px;
 	position: absolute;
 	right: 0;
@@ -34,12 +84,12 @@
 
 
 .modalButtonContainer{
-  margin: 0 auto;
+  	margin: 0 auto;
 	width: 100%;
 }
 
 .modalButtonContainer button{
-  all: unset;
+  	all: unset;
 	background-color: #EDB00F;
 	border-radius: 5px;
 	border: none;
