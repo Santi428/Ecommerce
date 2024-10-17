@@ -1,42 +1,34 @@
-import { useEffect, useState } from 'react'
-import Hero from '../../components/ui/Hero/Hero'
-import styles from './Home.module.css'
-import CardProduct from '../../components/ui/CardProduct/CardProduct'
-import { getProducts } from '../../service/products'
-import { Product } from '../../interfaces/product'
+import { useState } from 'react'
+import { useQuery } from 'react-query'
 import { Toaster } from 'sonner'
+import CardProduct from '../../components/ui/CardProduct/CardProduct'
+import Hero from '../../components/ui/Hero/Hero'
+import { getProducts } from '../../service/products'
+import styles from './Home.module.css'
 
 const Home = () => {
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(1)
 
-    const [products, setProducts] = useState<Product[]>([])
+    const {data, isLoading} = useQuery(['products', page], () => getProducts(page), {keepPreviousData: true})
 
-    const [error, setError] = useState(false)
-
-    const [isLoading, setIsLoading] = useState(true)
-
-    useEffect(() => {
-        getProducts(page)
-        .then((data) => {
-            setProducts(data)
-        })
-        .catch(() => setError(true))
-        .finally(() => setIsLoading(false))
-    }, [page])
-
-    // console.log(products)
-    
 
   return (
     <div>
         <Hero />
         <Toaster richColors/>
         {isLoading && <p>Loading....</p>}
-        {error && <p>Somthing went wrong.</p>}
+        {/* {error && <p>Somthing went wrong.</p>} */}
         <div className={styles.container}>
-            {products.map((i, index) => (
+            {data?.map((i, index) => (
                 <CardProduct key={index} product={i}/>
             ))}
+        </div>
+        <div className={styles.paginationContainer}>
+            <button className={styles.paginationButton} onClick={() => setPage((prev) => prev - 1)} disabled={page === 1}>Previus page</button>
+            <div className={styles.paginationActive}>
+                <span>{page}</span>
+            </div>
+            <button className={styles.paginationButton} onClick={() => setPage((prev) => prev + 1)}>Next page</button>
         </div>
     </div>
   )

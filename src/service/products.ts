@@ -1,6 +1,6 @@
 import { Product } from "../interfaces/product"
 
-export async function getProducts(page: number): Promise<Product[]>{
+export async function getProducts(page: number = 0): Promise<Product[]>{
     try{
         const res = await fetch(`http://localhost:3000/products?_page=${page}&_limit=24`)
 
