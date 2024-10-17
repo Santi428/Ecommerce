@@ -35,6 +35,7 @@
   font-size: 1.2rem;
 	font-weight: bold;
 	position: absolute;
-	right: 0px;
-	top: -25px;
+	/* right: 0px; */
+	left: 1835px;
+	top: -13px;
 }
