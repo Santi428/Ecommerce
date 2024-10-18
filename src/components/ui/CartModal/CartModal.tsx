@@ -19,6 +19,7 @@ const CartModal: React.FC<MyComponentProps> = ({setShow}) => {
     const controlCheckout = () => {
         if(state.cartItems.length >= 1){
             navigate('/checkout')
+            setShow()
         } else {
             toast.error('Para ir al checkout tiene que haber minimo 1 producto en el carro')
         }
